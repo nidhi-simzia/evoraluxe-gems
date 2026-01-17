@@ -18,6 +18,11 @@ const Header = () => {
               <span className="text-gold">LUXE</span>
               <span className="text-foreground">GEMS</span>
             </span>
+            <img
+              src="/assets/logo.svg"
+              alt="LuxeGems"
+              className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+            />
           </a>
 
           {/* Desktop Navigation */}
