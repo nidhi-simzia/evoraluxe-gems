@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X, Diamond } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ const Header = () => {
               <span className="text-foreground">GEMS</span>
             </span>
             <img
-              src="/assets/logo.png"
+              src={logo}
               alt="LuxeGems"
               className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
