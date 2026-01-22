@@ -17,7 +17,7 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/30 mb-8 animate-fade-in">
             <Sparkles className="w-4 h-4 text-gold" />
-            <span className="text-sm tracking-widest uppercase text-gold">Handcrafted Excellence</span>
+            <span className="text-sm tracking-widest uppercase text-gold">Luxury Forever</span>
           </div>
           
           {/* Headline */}
@@ -29,7 +29,7 @@ const Hero = () => {
           
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: "0.4s" }}>
-            Discover our exquisite collection of fine jewelry, where every piece tells a story of craftsmanship, 
+            Discover our exquisite collection of fine jewelry, where every piece tells a story of elegance,
             luxury, and eternal beauty.
           </p>
           

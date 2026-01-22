@@ -14,23 +14,23 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2 group">
-            <Diamond className="w-8 h-8 text-gold transition-transform duration-300 group-hover:rotate-12" />
-            <span className="font-serif text-2xl font-bold tracking-wide">
-              <span className="text-gold">LUXE</span>
-              <span className="text-foreground">GEMS</span>
-            </span>
+            {/*<Diamond className="w-8 h-8 text-gold transition-transform duration-300 group-hover:rotate-12" />*/}
             <img
-              src={logo}
-              alt="LuxeGems"
-              className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+                src={logo}
+                alt="LuxeGems"
+                className="h-[150px] w-auto transition-transform duration-300 group-hover:scale-105"
             />
+            <span className="font-serif text-2xl font-bold tracking-wide">
+              <span className="text-gold">ÉVORA</span>
+              <span className="text-foreground">LUXE</span>
+            </span>
           </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link}
+                <a
+                    key={link}
                 href={`#${link.toLowerCase()}`}
                 className="relative text-sm uppercase tracking-widest text-foreground/80 hover:text-gold transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
               >
