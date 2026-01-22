@@ -1,16 +1,14 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import productsData from "@/data/products.json";
 
 const ProductGrid = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const { products } = productsData;
   
-  const { categories, products } = productsData;
-  
-  const filteredProducts = activeCategory === "all" 
-    ? products 
-    : products.filter(p => p.category === activeCategory);
+  // Show only first 8 products on home page
+  const displayProducts = products.slice(0, 8);
 
   return (
     <section id="collections" className="py-24 bg-gradient-to-b from-background to-muted/30">
@@ -24,46 +22,26 @@ const ProductGrid = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          <Button
-            variant={activeCategory === "all" ? "default" : "outline"}
-            onClick={() => setActiveCategory("all")}
-            className={activeCategory === "all" 
-              ? "bg-gold hover:bg-gold/90 text-primary-foreground" 
-              : "border-gold/30 hover:bg-gold/10 hover:text-gold"
-            }
-          >
-            All Pieces
-          </Button>
-          {categories.map((cat) => (
-            <Button
-              key={cat.id}
-              variant={activeCategory === cat.id ? "default" : "outline"}
-              onClick={() => setActiveCategory(cat.id)}
-              className={activeCategory === cat.id 
-                ? "bg-gold hover:bg-gold/90 text-primary-foreground" 
-                : "border-gold/30 hover:bg-gold/10 hover:text-gold"
-              }
-            >
-              <span className="mr-2">{cat.icon}</span>
-              {cat.name}
-            </Button>
-          ))}
-        </div>
-
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+          {displayProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
 
-        {filteredProducts.length === 0 && (
-          <p className="text-center text-muted-foreground py-12">
-            No products found in this category.
-          </p>
-        )}
+        {/* View All Button */}
+        <div className="text-center">
+          <Button 
+            asChild
+            size="lg" 
+            className="bg-gold hover:bg-gold/90 text-primary-foreground gap-2"
+          >
+            <Link to="/collections">
+              View All Collections
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </Button>
+        </div>
       </div>
     </section>
   );
