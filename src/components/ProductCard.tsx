@@ -23,7 +23,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const whatsappNumber = "1234567890"; // Replace with actual number
+  const whatsappNumber = "8485918272"; // Replace with actual number
   const message = `Hi! I'm interested in purchasing the "${product.name}" (₹${product.price.toLocaleString()}). Please share more details.`;
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
