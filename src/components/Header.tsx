@@ -31,17 +31,17 @@ const Header = () => {
           {/*    <span className="text-foreground">LUXE</span>*/}
           {/*  </span>*/}
           {/*</Link>*/}
-          <Link to="/" className="flex items-center gap-1 md:gap-2 group">
+          <Link to="/" className="flex items-center gap-2 group">
             <img
                 src={logo}
                 alt="EvoraLuxe"
-                className="h-10 md:h-[150px] w-auto transition-transform duration-300 group-hover:scale-105"
+                /* Increased from h-16 to h-20, and adjusted desktop height for better ratio */
+                className="h-20 md:h-32 w-auto transition-transform duration-300 group-hover:scale-105"
             />
-            {/* Reduced text size on mobile (text-lg) vs desktop (text-2xl) */}
-            <span className="font-serif text-lg md:text-2xl font-bold tracking-wide whitespace-nowrap">
-              <span className="text-gold">ÉVORA</span>
-              <span className="text-foreground">LUXE</span>
-            </span>
+            <span className="font-serif text-xl md:text-3xl font-bold tracking-wide whitespace-nowrap">
+    <span className="text-gold">ÉVORA</span>
+    <span className="text-foreground"> LUXE</span>
+  </span>
           </Link>
 
           {/* Desktop Navigation */}

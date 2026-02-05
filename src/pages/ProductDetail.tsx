@@ -122,12 +122,12 @@ const ProductDetail = () => {
                       <p className="font-medium">{product.gemstone}</p>
                     </div>
                   )}
-                  {product.weight && (
-                    <div>
-                      <span className="text-muted-foreground">Weight</span>
-                      <p className="font-medium">{product.weight}</p>
-                    </div>
-                  )}
+                  {/*{product.weight && (*/}
+                  {/*  <div>*/}
+                  {/*    <span className="text-muted-foreground">Weight</span>*/}
+                  {/*    <p className="font-medium">{product.weight}</p>*/}
+                  {/*  </div>*/}
+                  {/*)}*/}
                   <div>
                     <span className="text-muted-foreground">Category</span>
                     <p className="font-medium capitalize">{product.category}</p>
