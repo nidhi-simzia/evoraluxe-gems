@@ -1,0 +1,40 @@
+{
+  "categories": [
+    {
+      "id": "rings",
+      "name": "Rings",
+      "icon": "💍"
+    },
+    {
+      "id": "necklaces",
+      "name": "Necklaces",
+      "icon": "📿"
+    },
+    {
+      "id": "earrings",
+      "name": "Earrings",
+      "icon": "✨"
+    },
+    {
+      "id": "bracelets",
+      "name": "Bracelets",
+      "icon": "⭐"
+    }
+  ],
+  "products": [
+    {
+      "id": 2,
+      "name": "Rose Gold Eternity Band",
+      "category": "rings",
+      "price": 50000,
+      "originalPrice": null,
+      "quantity": 8,
+      "description": "Stunning rose gold eternity Ring with Amethyst",
+      "material": "22K Rose Gold",
+      "gemstone": "Amethyst",
+      "weight": "4.5g",
+      "image": "/products/amethyst.jpg",
+      "featured": true
+    }
+  ]
+}

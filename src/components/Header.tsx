@@ -20,13 +20,25 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
+          {/*<Link to="/" className="flex items-center gap-2 group">*/}
+          {/*  <img*/}
+          {/*    src={logo}*/}
+          {/*    alt="LuxeGems"*/}
+          {/*    className="h-[150px] w-auto transition-transform duration-300 group-hover:scale-105"*/}
+          {/*  />*/}
+          {/*  <span className="font-serif text-2xl font-bold tracking-wide">*/}
+          {/*    <span className="text-gold">ÉVORA</span>*/}
+          {/*    <span className="text-foreground">LUXE</span>*/}
+          {/*  </span>*/}
+          {/*</Link>*/}
+          <Link to="/" className="flex items-center gap-1 md:gap-2 group">
             <img
-              src={logo}
-              alt="LuxeGems"
-              className="h-[150px] w-auto transition-transform duration-300 group-hover:scale-105"
+                src={logo}
+                alt="EvoraLuxe"
+                className="h-10 md:h-[150px] w-auto transition-transform duration-300 group-hover:scale-105"
             />
-            <span className="font-serif text-2xl font-bold tracking-wide">
+            {/* Reduced text size on mobile (text-lg) vs desktop (text-2xl) */}
+            <span className="font-serif text-lg md:text-2xl font-bold tracking-wide whitespace-nowrap">
               <span className="text-gold">ÉVORA</span>
               <span className="text-foreground">LUXE</span>
             </span>
