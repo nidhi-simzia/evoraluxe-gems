@@ -21,7 +21,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 type ViewMode = "default" | "compact" | "minimal";
 
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 20;
 
 const Collections = () => {
   const [searchParams] = useSearchParams();
