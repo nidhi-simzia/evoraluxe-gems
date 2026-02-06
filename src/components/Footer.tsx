@@ -1,5 +1,7 @@
 import { Diamond, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/leaf.png";
+import {Link} from "react-router-dom";
 
 const Footer = () => {
   const whatsappNumber = "1234567890";
@@ -12,14 +14,21 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <a href="/" className="flex items-center gap-2 mb-6">
-              <Diamond className="w-8 h-8 text-gold" />
-              <span className="font-serif text-2xl font-bold">
-                <span className="text-gold">LUXE</span>
-                <span className="text-background">GEMS</span>
-              </span>
+              <Link to="/" className="flex items-center gap-2 group">
+                <img
+                    src={logo}
+                    alt="EvoraLuxe"
+                    /* Increased from h-16 to h-20, and adjusted desktop height for better ratio */
+                    className="h-20 md:h-32 w-auto transition-transform duration-300 group-hover:scale-105"
+                />
+                <span className="font-serif text-m md:text-xl font-bold tracking-wide whitespace-nowrap">
+                  <span className="text-gold">ÉVORA</span>
+                  <span className="text-gold"> LUXE</span>
+                </span>
+              </Link>
             </a>
             <p className="text-background/70 mb-6">
-              Crafting timeless pieces of elegance since 1990. Where luxury meets artistry.
+              Where luxury meets artistry.
             </p>
             <Button 
               asChild
@@ -72,15 +81,15 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-gold" />
-                <span className="text-background/70">+91 123 456 7890</span>
+                <span className="text-background/70">+91 848 591 8272</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-gold" />
-                <span className="text-background/70">hello@luxegems.com</span>
+                <span className="text-background/70">support@theevoraluxe.com</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gold flex-shrink-0" />
-                <span className="text-background/70">123 Diamond Street, Jewel District, Mumbai 400001</span>
+                <span className="text-background/70">Vadodara</span>
               </li>
             </ul>
           </div>

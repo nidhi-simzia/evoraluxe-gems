@@ -13,7 +13,7 @@ const VideoHero = () => {
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source
-          src="https://videos.pexels.com/video-files/4125026/4125026-uhd_2560_1440_30fps.mp4"
+          src="/products/Jewel_Photo_Session_Video_Creation.mp4"
           type="video/mp4"
         />
       </video>

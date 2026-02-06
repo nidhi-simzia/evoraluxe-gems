@@ -57,7 +57,7 @@ const CategorySections = () => {
                 
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col justify-end p-8">
-                  <span className="text-4xl mb-3">{category.icon}</span>
+                  {/*<span className="text-4xl mb-3">{category.icon}</span>*/}
                   <h3 className="font-serif text-3xl font-bold text-white mb-2">
                     {category.name}
                   </h3>
