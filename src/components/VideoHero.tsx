@@ -1,4 +1,4 @@
-import { ArrowDown, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const VideoHero = () => {
@@ -58,7 +58,7 @@ const VideoHero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="border-white/50 text-white hover:bg-white/10 px-8 py-6 text-lg tracking-wide backdrop-blur-sm"
+              className="border-gold/50 text-gold hover:bg-gold/10 px-8 py-6 text-lg tracking-wide backdrop-blur-sm"
               asChild
             >
               <a href="#about">Our Story</a>
@@ -66,12 +66,6 @@ const VideoHero = () => {
           </div>
         </div>
         
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-          <a href="#categories" className="text-gold/80 hover:text-gold transition-colors">
-            <ArrowDown className="w-6 h-6" />
-          </a>
-        </div>
       </div>
     </section>
   );
