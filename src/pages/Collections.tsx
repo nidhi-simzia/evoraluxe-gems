@@ -6,8 +6,10 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ShoppingCart, Eye, LayoutGrid, Grid3X3, Grid2X2 } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { ShoppingCart, Eye, LayoutGrid, Grid3X3, Grid2X2, Search } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { useCurrency } from "@/context/CurrencyContext";
 import productsData from "@/data/products.json";
 import {
   Pagination,
@@ -30,11 +32,12 @@ const Collections = () => {
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [currentPage, setCurrentPage] = useState(1);
   const [viewMode, setViewMode] = useState<ViewMode>("default");
+  const [searchQuery, setSearchQuery] = useState("");
   const { addToCart } = useCart();
+  const { formatPrice } = useCurrency();
   
   const { categories, products } = productsData;
   
-  // Update category when URL param changes
   useEffect(() => {
     const categoryParam = searchParams.get("category");
     if (categoryParam) {
@@ -43,9 +46,15 @@ const Collections = () => {
     }
   }, [searchParams]);
   
-  const filteredProducts = activeCategory === "all" 
-    ? products 
-    : products.filter(p => p.category === activeCategory);
+  const filteredProducts = products.filter(p => {
+    const matchesCategory = activeCategory === "all" || p.category === activeCategory;
+    const matchesSearch = searchQuery === "" || 
+      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.material.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.category.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -59,6 +68,11 @@ const Collections = () => {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
+    setCurrentPage(1);
   };
 
   const getGridClasses = () => {
@@ -78,7 +92,6 @@ const Collections = () => {
       
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
-          {/* Header */}
           <div className="text-center mb-12">
             <p className="text-gold uppercase tracking-[0.3em] text-sm mb-4">Browse Our</p>
             <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -90,9 +103,19 @@ const Collections = () => {
             </p>
           </div>
 
+          {/* Search Bar */}
+          <div className="relative max-w-md mx-auto mb-8">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Input
+              placeholder="Search jewelry..."
+              value={searchQuery}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              className="pl-10 border-gold/30 focus:border-gold"
+            />
+          </div>
+
           {/* Filters Row */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
-            {/* Category Filter */}
             <div className="flex flex-wrap justify-center gap-2">
               <Button
                 variant={activeCategory === "all" ? "default" : "outline"}
@@ -122,7 +145,6 @@ const Collections = () => {
               ))}
             </div>
 
-            {/* View Mode Toggle */}
             <ToggleGroup type="single" value={viewMode} onValueChange={(v) => v && setViewMode(v as ViewMode)}>
               <ToggleGroupItem value="default" aria-label="Default view" className="data-[state=on]:bg-gold data-[state=on]:text-primary-foreground">
                 <LayoutGrid className="w-4 h-4" />
@@ -139,16 +161,22 @@ const Collections = () => {
           {/* Products Grid */}
           <div className={`grid ${getGridClasses()} gap-4 mb-12`}>
             {paginatedProducts.map((product) => (
-              <ProductCard 
+              <CollectionProductCard 
                 key={product.id} 
                 product={product} 
                 viewMode={viewMode}
                 onAddToCart={() => addToCart({ id: product.id, name: product.name, price: product.price, image: product.image })}
+                formatPrice={formatPrice}
               />
             ))}
           </div>
 
-          {/* Pagination */}
+          {paginatedProducts.length === 0 && (
+            <div className="text-center py-16 text-muted-foreground">
+              <p className="text-lg">No products found matching your search.</p>
+            </div>
+          )}
+
           {totalPages > 1 && (
             <Pagination>
               <PaginationContent>
@@ -158,7 +186,6 @@ const Collections = () => {
                     className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
                   />
                 </PaginationItem>
-                
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                   <PaginationItem key={page}>
                     <PaginationLink
@@ -170,7 +197,6 @@ const Collections = () => {
                     </PaginationLink>
                   </PaginationItem>
                 ))}
-                
                 <PaginationItem>
                   <PaginationNext 
                     onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
@@ -189,37 +215,32 @@ const Collections = () => {
   );
 };
 
-// ProductCard component for different view modes
-interface ProductCardProps {
+interface CollectionProductCardProps {
   product: {
     id: number;
     name: string;
     category: string;
     price: number;
+    priceUSD: number;
     originalPrice: number | null;
+    originalPriceUSD: number | null;
     quantity: number;
     material: string;
     image: string;
   };
   viewMode: ViewMode;
   onAddToCart: () => void;
+  formatPrice: (priceINR: number, priceUSD?: number) => string;
 }
 
-const ProductCard = ({ product, viewMode, onAddToCart }: ProductCardProps) => {
+const CollectionProductCard = ({ product, viewMode, onAddToCart, formatPrice }: CollectionProductCardProps) => {
   if (viewMode === "minimal") {
-    // Just images, no text
     return (
       <Link to={`/product/${product.id}`}>
         <div className="group relative aspect-square rounded-lg overflow-hidden border border-gold/20 hover:border-gold/50 transition-all">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
+          <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
           {product.originalPrice && (
-            <Badge className="absolute top-1 left-1 bg-destructive text-destructive-foreground text-xs px-1 py-0">
-              Sale
-            </Badge>
+            <Badge className="absolute top-1 left-1 bg-destructive text-destructive-foreground text-xs px-1 py-0">Sale</Badge>
           )}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
             <Eye className="w-6 h-6 text-white" />
@@ -230,36 +251,26 @@ const ProductCard = ({ product, viewMode, onAddToCart }: ProductCardProps) => {
   }
 
   if (viewMode === "compact") {
-    // Small cards with short name
     return (
       <Link to={`/product/${product.id}`}>
         <div className="group relative rounded-lg overflow-hidden border border-gold/20 hover:border-gold/50 transition-all bg-card">
           <div className="aspect-square overflow-hidden">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
+            <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
           </div>
           <div className="p-2">
             <p className="text-xs text-foreground line-clamp-1 font-medium">{product.name.split(' ').slice(0, 3).join(' ')}</p>
-            <p className="text-sm font-bold text-gold">₹{product.price.toLocaleString()}</p>
+            <p className="text-sm font-bold text-gold">{formatPrice(product.price, product.priceUSD)}</p>
           </div>
         </div>
       </Link>
     );
   }
 
-  // Default view - full card
   return (
     <Card className="group overflow-hidden border-gold/20 bg-card hover:shadow-gold transition-all duration-500 hover:-translate-y-1">
       <Link to={`/product/${product.id}`}>
         <div className="relative overflow-hidden aspect-square">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-          />
+          <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
           {product.originalPrice && (
             <Badge className="absolute top-3 left-3 bg-destructive text-destructive-foreground">
               {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
@@ -271,35 +282,23 @@ const ProductCard = ({ product, viewMode, onAddToCart }: ProductCardProps) => {
             </Badge>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-            <span className="text-white flex items-center gap-2 text-sm">
-              <Eye className="w-4 h-4" /> View Details
-            </span>
+            <span className="text-white flex items-center gap-2 text-sm"><Eye className="w-4 h-4" /> View Details</span>
           </div>
         </div>
       </Link>
-      
       <CardContent className="p-5 space-y-3">
         <div className="space-y-1">
           <p className="text-xs uppercase tracking-widest text-gold font-medium">{product.material}</p>
           <h3 className="font-serif text-lg font-semibold text-foreground leading-tight">{product.name}</h3>
         </div>
-        
         <div className="flex items-center gap-2">
-          <span className="text-xl font-bold text-gold">₹{product.price.toLocaleString()}</span>
+          <span className="text-xl font-bold text-gold">{formatPrice(product.price, product.priceUSD)}</span>
           {product.originalPrice && (
-            <span className="text-sm text-muted-foreground line-through">₹{product.originalPrice.toLocaleString()}</span>
+            <span className="text-sm text-muted-foreground line-through">{formatPrice(product.originalPrice, product.originalPriceUSD || undefined)}</span>
           )}
         </div>
-        
-        <Button 
-          onClick={(e) => {
-            e.preventDefault();
-            onAddToCart();
-          }}
-          className="w-full bg-gold hover:bg-gold/90 text-primary-foreground gap-2"
-        >
-          <ShoppingCart className="w-4 h-4" />
-          Add to Cart
+        <Button onClick={(e) => { e.preventDefault(); onAddToCart(); }} className="w-full bg-gold hover:bg-gold/90 text-primary-foreground gap-2">
+          <ShoppingCart className="w-4 h-4" />Add to Cart
         </Button>
       </CardContent>
     </Card>
