@@ -443,6 +443,20 @@
       "featured": false
     },
     {
+      "id": 36,
+      "name": "Sculpted Gold Statement Stud Earrings",
+      "category": "earrings",
+      "price": 220,
+      "originalPrice": null,
+      "quantity": 20,
+      "description": "Bold, sculpted gold-finish stud earrings designed for effortless modern elegance.",
+      "material": "Anti Tarnish",
+      "gemstone": null,
+      "weight": "6.8g",
+      "image": "/products/circle-earring.PNG",
+      "featured": false
+    },
+    {
       "id": 1,
       "name": "Diamond Solitaire Ring",
       "category": "silver_jewels",
