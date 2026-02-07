@@ -6,11 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, MessageCircle, ChevronRight, ArrowLeft } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { useCurrency } from "@/context/CurrencyContext";
+import ImageCarousel from "@/components/ImageCarousel";
 import productsData from "@/data/products.json";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const { addToCart } = useCart();
+  const { formatPrice, symbol } = useCurrency();
   
   const product = productsData.products.find(p => p.id === Number(id));
   
@@ -29,8 +32,13 @@ const ProductDetail = () => {
     );
   }
 
+  const productImages = product.images && product.images.length > 0 
+    ? product.images 
+    : [product.image];
+
   const whatsappNumber = "8485918272";
-  const message = `Hi! I'm interested in purchasing the "${product.name}" (₹${product.price.toLocaleString()}). Please share more details.`;
+  const priceDisplay = formatPrice(product.price, product.priceUSD);
+  const message = `Hi! I'm interested in purchasing the "${product.name}" (${priceDisplay}). Please share more details.`;
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   const handleAddToCart = () => {
@@ -48,7 +56,6 @@ const ProductDetail = () => {
       
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
-          {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
             <Link to="/" className="hover:text-gold transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
@@ -57,7 +64,6 @@ const ProductDetail = () => {
             <span className="text-foreground">{product.name}</span>
           </nav>
 
-          {/* Back Button */}
           <Link 
             to="/collections" 
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-gold transition-colors mb-8"
@@ -67,17 +73,11 @@ const ProductDetail = () => {
           </Link>
 
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Product Image */}
+            {/* Product Image(s) */}
             <div className="relative">
-              <div className="aspect-square overflow-hidden rounded-2xl bg-muted">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <ImageCarousel images={productImages} alt={product.name} />
               {product.originalPrice && (
-                <Badge className="absolute top-4 left-4 bg-destructive text-destructive-foreground text-lg px-4 py-1">
+                <Badge className="absolute top-4 left-4 z-10 bg-destructive text-destructive-foreground text-lg px-4 py-1">
                   {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
                 </Badge>
               )}
@@ -94,10 +94,10 @@ const ProductDetail = () => {
               </div>
 
               <div className="flex items-baseline gap-4">
-                <span className="text-4xl font-bold text-gold">₹{product.price.toLocaleString()}</span>
+                <span className="text-4xl font-bold text-gold">{formatPrice(product.price, product.priceUSD)}</span>
                 {product.originalPrice && (
                   <span className="text-xl text-muted-foreground line-through">
-                    ₹{product.originalPrice.toLocaleString()}
+                    {formatPrice(product.originalPrice, product.originalPriceUSD || undefined)}
                   </span>
                 )}
               </div>
@@ -108,7 +108,6 @@ const ProductDetail = () => {
                 </Badge>
               )}
 
-              {/* Specifications */}
               <div className="border-t border-b border-border py-6 space-y-4">
                 <h3 className="font-serif text-lg font-semibold">Specifications</h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
@@ -122,12 +121,6 @@ const ProductDetail = () => {
                       <p className="font-medium">{product.gemstone}</p>
                     </div>
                   )}
-                  {/*{product.weight && (*/}
-                  {/*  <div>*/}
-                  {/*    <span className="text-muted-foreground">Weight</span>*/}
-                  {/*    <p className="font-medium">{product.weight}</p>*/}
-                  {/*  </div>*/}
-                  {/*)}*/}
                   <div>
                     <span className="text-muted-foreground">Category</span>
                     <p className="font-medium capitalize">{product.category}</p>
@@ -135,7 +128,6 @@ const ProductDetail = () => {
                 </div>
               </div>
 
-              {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   onClick={handleAddToCart}
