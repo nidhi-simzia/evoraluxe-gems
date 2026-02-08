@@ -52,7 +52,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
               {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
             </Badge>
           )}
-          {product.quantity <= 3 && (
+          {product.quantity === 0 && (
+            <Badge className="absolute top-3 right-3 bg-muted text-muted-foreground">
+              Out of Stock
+            </Badge>
+          )}
+          {product.quantity > 0 && product.quantity <= 3 && (
             <Badge variant="outline" className="absolute top-3 right-3 bg-background/90 border-gold text-gold">
               Only {product.quantity} left
             </Badge>
@@ -74,9 +79,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
             <span className="text-sm text-muted-foreground line-through">{formatPrice(product.originalPrice, product.originalPriceUSD || undefined)}</span>
           )}
         </div>
-        <Button onClick={handleAddToCart} className="w-full bg-gold hover:bg-gold/90 text-primary-foreground gap-2">
-          <ShoppingCart className="w-4 h-4" />Add to Cart
-        </Button>
+        {product.quantity === 0 ? (
+          <Button disabled className="w-full gap-2 opacity-60">Out of Stock</Button>
+        ) : (
+          <Button onClick={handleAddToCart} className="w-full bg-gold hover:bg-gold/90 text-primary-foreground gap-2">
+            <ShoppingCart className="w-4 h-4" />Add to Cart
+          </Button>
+        )}
       </CardContent>
     </Card>
   );

@@ -102,7 +102,12 @@ const ProductDetail = () => {
                 )}
               </div>
 
-              {product.quantity <= 5 && (
+              {product.quantity === 0 && (
+                <Badge variant="outline" className="border-destructive text-destructive">
+                  Out of Stock
+                </Badge>
+              )}
+              {product.quantity > 0 && product.quantity <= 5 && (
                 <Badge variant="outline" className="border-gold text-gold">
                   Only {product.quantity} left in stock
                 </Badge>
@@ -128,24 +133,39 @@ const ProductDetail = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  onClick={handleAddToCart}
-                  className="flex-1 bg-gold hover:bg-gold/90 text-primary-foreground gap-2 h-14 text-lg"
-                >
-                  <ShoppingCart className="w-5 h-5" />
-                  Add to Cart
-                </Button>
-                <Button 
-                  asChild
-                  className="flex-1 bg-whatsapp hover:bg-whatsapp/90 text-white gap-2 h-14 text-lg"
-                >
-                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="w-5 h-5" />
-                    Buy Now via WhatsApp
-                  </a>
-                </Button>
-              </div>
+              {product.quantity === 0 ? (
+                <div className="flex flex-col gap-4">
+                  <Button disabled className="flex-1 h-14 text-lg opacity-60">Out of Stock</Button>
+                  <Button 
+                    asChild
+                    className="flex-1 bg-whatsapp hover:bg-whatsapp/90 text-white gap-2 h-14 text-lg"
+                  >
+                    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="w-5 h-5" />
+                      Enquire via WhatsApp
+                    </a>
+                  </Button>
+                </div>
+              ) : (
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button 
+                    onClick={handleAddToCart}
+                    className="flex-1 bg-gold hover:bg-gold/90 text-primary-foreground gap-2 h-14 text-lg"
+                  >
+                    <ShoppingCart className="w-5 h-5" />
+                    Add to Cart
+                  </Button>
+                  <Button 
+                    asChild
+                    className="flex-1 bg-whatsapp hover:bg-whatsapp/90 text-white gap-2 h-14 text-lg"
+                  >
+                    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="w-5 h-5" />
+                      Buy Now via WhatsApp
+                    </a>
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>
