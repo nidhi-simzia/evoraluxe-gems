@@ -93,7 +93,7 @@ const ShopTheLook = () => {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-muted/30">
+    <section className="py-8 bg-gradient-to-b from-background to-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <p className="text-gold uppercase tracking-[0.3em] text-sm mb-4">Curated Sets</p>
