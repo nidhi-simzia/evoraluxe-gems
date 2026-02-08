@@ -85,7 +85,7 @@ const ReviewsCarousel = () => {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-b from-muted/20 to-background overflow-hidden">
+    <section className="py-8 bg-gradient-to-b from-muted/20 to-background overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">

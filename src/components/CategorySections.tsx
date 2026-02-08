@@ -22,7 +22,7 @@ const CategorySections = () => {
   const { categories, products } = productsData;
 
   return (
-    <section id="categories" className="py-24 bg-gradient-to-b from-background to-muted/20">
+    <section id="categories" className="py-8 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -58,7 +58,7 @@ const CategorySections = () => {
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col justify-end p-8">
                   {/*<span className="text-4xl mb-3">{category.icon}</span>*/}
-                  <h3 className="font-serif text-3xl font-bold text-white mb-2">
+                  <h3 className="font-serif text-3xl md:text-4xl font-bold text-white mb-2">
                     {category.name}
                   </h3>
                   <p className="text-white/70 text-sm mb-4">
