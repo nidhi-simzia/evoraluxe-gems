@@ -132,11 +132,11 @@ const ReviewsCarousel = () => {
                         </p>
 
                         <div className="flex items-center gap-4 justify-center md:justify-start">
-                          <img
-                            src={review.image}
-                            alt={review.name}
-                            className="w-14 h-14 rounded-full object-cover border-2 border-gold/30"
-                          />
+                          <div className="w-14 h-14 rounded-full border-2 border-gold/30 bg-gold/10 flex items-center justify-center">
+                            <span className="font-serif text-lg font-bold text-gold">
+                              {review.name.split(' ').map(n => n[0]).join('')}
+                            </span>
+                          </div>
                           <div>
                             <p className="font-serif text-lg font-semibold text-foreground">{review.name}</p>
                             <p className="text-sm text-muted-foreground">{review.location}</p>
