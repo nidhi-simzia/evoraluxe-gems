@@ -15,46 +15,46 @@ interface Review {
 const reviews: Review[] = [
   {
     id: 1,
-    name: "Priya Sharma",
-    location: "Mumbai",
+    name: "Usha",
+    location: "Ahmedabad",
     rating: 5,
-    review: "Absolutely stunning! The craftsmanship is impeccable. I received so many compliments on my anniversary dinner. Will definitely be ordering more!",
+    review: "Absolutely in love with my Evoraluxe silver and anti-tarnish jewellery — premium finish, no dulling, and it still looks brand new after everyday wear.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80",
     productImage: "/products/butterfly_neck.PNG"
   },
   {
     id: 2,
-    name: "Anjali Patel",
-    location: "Delhi",
+    name: "Ansuya",
+    location: "Vadodara",
     rating: 5,
-    review: "The attention to detail is remarkable. Every piece feels special and unique. Customer service was exceptional throughout the process.",
+    review: "Bought bracelets and earrings from Evoraluxe and I’m obsessed — elegant, lightweight, and they haven’t lost their shine even with daily wear.",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80",
     productImage: "/products/black_white_bracelet.JPG"
   },
   {
     id: 3,
-    name: "Meera Reddy",
-    location: "Bangalore",
+    name: "Zalak",
+    location: "Rajkot",
     rating: 5,
-    review: "I ordered the tennis bracelet for my sister's wedding and it was perfect. The sparkle is incredible and it photographed beautifully!",
+    review: "I loved the packaging, the surprise gift from Evoraluxe was such a sweet touch, and every product is amazing — absolutely perfect for gifting.",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80",
     productImage: "/products/tennis_bracelet.PNG"
   },
   {
     id: 4,
-    name: "Kavya Nair",
-    location: "Chennai",
+    name: "Monica",
+    location: "Morbi",
     rating: 5,
-    review: "Best jewelry purchase I've ever made online. The quality exceeded my expectations. Packaging was luxurious and delivery was prompt.",
+    review: "BAbsolutely loved the rings, earrings, and the broad kada bracelet — stunning designs, premium feel, and perfect statement pieces for any occasion.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80",
     productImage: "/products/kada-1.PNG"
   },
   {
     id: 5,
-    name: "Ritu Singh",
-    location: "Pune",
+    name: "Ruchita",
+    location: "Vadodara",
     rating: 5,
-    review: "The heart necklace is my daily wear now. It's elegant yet durable. Perfect for both casual and formal occasions. Highly recommend!",
+    review: "I’ve been wearing the everyday bracelet and earrings to office daily for the past 2 months, and the shine is still exactly the same — truly impressive quality.",
     image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80",
     productImage: "/products/pink-heart-necklace.PNG"
   }

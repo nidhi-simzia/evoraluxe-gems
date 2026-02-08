@@ -20,28 +20,29 @@ interface LookBundle {
 const lookBundles: LookBundle[] = [
   {
     id: 1,
-    name: "Elegant Evening",
-    description: "Perfect for special occasions and dinner dates",
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80",
-    productIds: [5, 7, 14],
-    bundlePrice: 700,
-    bundlePriceUSD: 9
+    name: "Aqua Grace Combo",
+    description: "Where golden elegance meets sunlit serenity.",
+    image: "/products/BRACELET-COMBO.PNG",
+    productIds: [8, 18, 38],
+    bundlePrice: 750,
+    bundlePriceUSD: 15.99
   },
   {
     id: 2,
-    name: "Everyday Luxe",
+    name: "Golden Heart Necklace Stack",
     description: "Subtle elegance for your daily style",
-    image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=800&q=80",
-    productIds: [10, 8, 6]
+    image: "/products/necklack-heart-combo.JPG",
+    productIds: [15, 17 ],
+    // bundlePriceUSD: 15.99
   },
   {
     id: 3,
-    name: "Golden Goddess",
-    description: "Bold and beautiful statement pieces",
-    image: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=800&q=80",
-    productIds: [9, 12, 21],
-    bundlePrice: 850,
-    bundlePriceUSD: 11
+    name: "Noir Clover Luxe Combo",
+    description: "Bold black accents wrapped in timeless golden elegance.",
+    image: "/products/braacelete-combo-black.JPG",
+    productIds: [7, 37],
+    // bundlePrice: 850,
+    // bundlePriceUSD: 11
   }
 ];
 

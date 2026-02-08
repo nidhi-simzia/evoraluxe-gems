@@ -3,10 +3,10 @@ import { ArrowRight } from "lucide-react";
 import productsData from "@/data/products.json";
 
 const categoryImages: Record<string, string> = {
-  rings: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80",
-  necklace: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80",
-  earrings: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80",
-  bracelets: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&q=80",
+  rings: "/products/ring_cat.JPG",
+  necklace: "/products/neck_cat.JPG",
+  earrings: "/products/earrings_cat.JPG",
+  bracelets: "/products/bracelet_cat.JPG",
   silver_jewels: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80",
 };
 

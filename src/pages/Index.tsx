@@ -17,7 +17,7 @@ const Index = () => {
       <ReviewsCarousel />
       <FeaturedSection />
       <ShopTheLook />
-      <About />
+      {/*<About />*/}
       <Footer />
       <WhatsAppFloat />
     </div>

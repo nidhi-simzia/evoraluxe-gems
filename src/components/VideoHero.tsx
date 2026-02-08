@@ -30,7 +30,7 @@ const VideoHero = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/20 border border-gold/40 mb-8 animate-fade-in backdrop-blur-sm">
             <Sparkles className="w-4 h-4 text-gold" />
-            <span className="text-sm tracking-widest uppercase text-gold">Crafted with Love</span>
+            <span className="text-sm tracking-widest uppercase text-gold">Styled with Love</span>
           </div>
           
           {/* Headline */}
