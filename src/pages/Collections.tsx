@@ -99,7 +99,7 @@ const Collections = () => {
             </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-4" />
             <p className="text-muted-foreground">
-              Showing {filteredProducts.length} exquisite pieces
+              {/*Showing {filteredProducts.length} exquisite pieces*/}
             </p>
           </div>
 
