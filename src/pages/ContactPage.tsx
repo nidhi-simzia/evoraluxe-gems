@@ -4,7 +4,7 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { Phone, Mail, MapPin, MessageCircle, Clock, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const whatsappNumber = "1234567890";
+const whatsappNumber = "8485918272";
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi! I'd like to know more about your jewelry collection.")}`;
 
 const contactMethods = [
@@ -33,8 +33,8 @@ const contactMethods = [
     icon: Instagram,
     title: "Instagram",
     description: "Follow us for latest designs, offers, and styling tips.",
-    detail: "@theevoraluxe",
-    action: { label: "Follow Us", href: "https://instagram.com/theevoraluxe" },
+    detail: "@the.evoraluxe",
+    action: { label: "Follow Us", href: "https://instagram.com/the.evoraluxe" },
   },
 ];
 
@@ -88,28 +88,28 @@ const ContactPage = () => {
       </section>
 
       {/* Info Section */}
-      <section className="py-12 bg-gradient-to-b from-background to-muted/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="p-6 bg-card border border-gold/20 rounded-2xl">
-                <Clock className="w-8 h-8 text-gold mx-auto mb-4" />
-                <h3 className="font-serif text-lg font-semibold text-foreground mb-2">Business Hours</h3>
-                <p className="text-muted-foreground">Monday – Saturday</p>
-                <p className="text-muted-foreground">10:00 AM – 7:00 PM IST</p>
-                <p className="text-sm text-muted-foreground mt-2">Sunday: Closed</p>
-              </div>
-              <div className="p-6 bg-card border border-gold/20 rounded-2xl">
-                <MapPin className="w-8 h-8 text-gold mx-auto mb-4" />
-                <h3 className="font-serif text-lg font-semibold text-foreground mb-2">Our Location</h3>
-                <p className="text-muted-foreground">Vadodara, Gujarat</p>
-                <p className="text-muted-foreground">India</p>
-                <p className="text-sm text-muted-foreground mt-2">Shipping Pan-India & International</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/*<section className="py-12 bg-gradient-to-b from-background to-muted/20">*/}
+      {/*  <div className="container mx-auto px-4">*/}
+      {/*    <div className="max-w-3xl mx-auto text-center">*/}
+      {/*      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">*/}
+      {/*        <div className="p-6 bg-card border border-gold/20 rounded-2xl">*/}
+      {/*          <Clock className="w-8 h-8 text-gold mx-auto mb-4" />*/}
+      {/*          <h3 className="font-serif text-lg font-semibold text-foreground mb-2">Business Hours</h3>*/}
+      {/*          <p className="text-muted-foreground">Monday – Saturday</p>*/}
+      {/*          <p className="text-muted-foreground">10:00 AM – 7:00 PM IST</p>*/}
+      {/*          <p className="text-sm text-muted-foreground mt-2">Sunday: Closed</p>*/}
+      {/*        </div>*/}
+      {/*        <div className="p-6 bg-card border border-gold/20 rounded-2xl">*/}
+      {/*          <MapPin className="w-8 h-8 text-gold mx-auto mb-4" />*/}
+      {/*          <h3 className="font-serif text-lg font-semibold text-foreground mb-2">Our Location</h3>*/}
+      {/*          <p className="text-muted-foreground">Vadodara, Gujarat</p>*/}
+      {/*          <p className="text-muted-foreground">India</p>*/}
+      {/*          <p className="text-sm text-muted-foreground mt-2">Shipping Pan-India & International</p>*/}
+      {/*        </div>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</section>*/}
 
       <Footer />
       <WhatsAppFloat />

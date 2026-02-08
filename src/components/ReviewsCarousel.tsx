@@ -45,7 +45,7 @@ const reviews: Review[] = [
     name: "Monica",
     location: "Morbi",
     rating: 5,
-    review: "BAbsolutely loved the rings, earrings, and the broad kada bracelet — stunning designs, premium feel, and perfect statement pieces for any occasion.",
+    review: "Absolutely loved the rings, earrings, and the broad kada bracelet — stunning designs, premium feel, and perfect statement pieces for any occasion.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80",
     productImage: "/products/kada-1.PNG"
   },

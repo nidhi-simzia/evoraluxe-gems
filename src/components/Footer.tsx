@@ -4,7 +4,7 @@ import logo from "@/assets/leaf.png";
 import {Link} from "react-router-dom";
 
 const Footer = () => {
-  const whatsappNumber = "1234567890";
+  const whatsappNumber = "8485918272";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi! I'd like to know more about your jewelry collection.")}`;
 
   return (
@@ -92,10 +92,10 @@ const Footer = () => {
                 <Mail className="w-5 h-5 text-gold" />
                 <span className="text-background/70">support@theevoraluxe.com</span>
               </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-gold flex-shrink-0" />
-                <span className="text-background/70">Vadodara</span>
-              </li>
+              {/*<li className="flex items-start gap-3">*/}
+              {/*  <MapPin className="w-5 h-5 text-gold flex-shrink-0" />*/}
+              {/*  <span className="text-background/70">Vadodara</span>*/}
+              {/*</li>*/}
             </ul>
           </div>
         </div>
