@@ -46,6 +46,7 @@ const ProductDetail = () => {
       id: product.id,
       name: product.name,
       price: product.price,
+      priceUSD: product.priceUSD,
       image: product.image,
     });
   };
