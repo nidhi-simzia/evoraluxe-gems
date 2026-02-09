@@ -6,15 +6,18 @@ import { useCurrency } from "@/context/CurrencyContext";
 import { Badge } from "@/components/ui/badge";
 
 const CartDrawer = () => {
-  const { items, totalItems, totalPrice, updateQuantity, removeFromCart, clearCart } = useCart();
-  const { formatPrice, symbol } = useCurrency();
+  const { items, totalItems, updateQuantity, removeFromCart, clearCart } = useCart();
+  const { formatPrice, formatPriceRaw, symbol } = useCurrency();
 
   const whatsappNumber = "918485918272";
+
+  const totalPrice = items.reduce((sum, item) => sum + formatPriceRaw(item.price, item.priceUSD) * item.quantity, 0);
   
   const generateWhatsAppMessage = () => {
     let message = "Hi! I'd like to place an order:\n\n";
     items.forEach((item) => {
-      message += `• ${item.name} x${item.quantity} - ${symbol}${(item.price * item.quantity).toLocaleString()}\n`;
+      const itemPrice = formatPriceRaw(item.price, item.priceUSD);
+      message += `• ${item.name} x${item.quantity} - ${symbol}${(itemPrice * item.quantity).toLocaleString()}\n`;
     });
     message += `\n*Total: ${symbol}${totalPrice.toLocaleString()}*\n\nPlease confirm availability and payment details.`;
     return encodeURIComponent(message);
@@ -53,7 +56,7 @@ const CartDrawer = () => {
                     <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded-md" />
                     <div className="flex-1 min-w-0">
                       <h4 className="font-medium text-sm truncate">{item.name}</h4>
-                      <p className="text-gold font-semibold">{symbol}{item.price.toLocaleString()}</p>
+                      <p className="text-gold font-semibold">{formatPrice(item.price, item.priceUSD)}</p>
                       <div className="flex items-center gap-2 mt-2">
                         <Button variant="outline" size="icon" className="h-7 w-7" onClick={() => updateQuantity(item.id, item.quantity - 1)}>
                           <Minus className="h-3 w-3" />
