@@ -4,7 +4,7 @@ import logo from "@/assets/leaf.png";
 import {Link} from "react-router-dom";
 
 const Footer = () => {
-  const whatsappNumber = "8485918272";
+  const whatsappNumber = "918485918272";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi! I'd like to know more about your jewelry collection.")}`;
 
   return (

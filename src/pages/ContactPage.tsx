@@ -4,7 +4,7 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { Phone, Mail, MapPin, MessageCircle, Clock, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const whatsappNumber = "8485918272";
+const whatsappNumber = "918485918272";
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi! I'd like to know more about your jewelry collection.")}`;
 
 const contactMethods = [

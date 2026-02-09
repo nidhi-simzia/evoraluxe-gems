@@ -36,7 +36,7 @@ const ProductDetail = () => {
     ? product.images 
     : [product.image];
 
-  const whatsappNumber = "8485918272";
+  const whatsappNumber = "918485918272";
   const priceDisplay = formatPrice(product.price, product.priceUSD);
   const message = `Hi! I'm interested in purchasing the "${product.name}" (${priceDisplay}). Please share more details.`;
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;

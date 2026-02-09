@@ -907,6 +907,40 @@
       "image": "/products/infinite.PNG",
       "images": [],
       "featured": false
+    },
+    {
+      "id": 54,
+      "name": "Ocean Whisper Mermaid Tail Necklace",
+      "category": "silver_jewels",
+      "price": 2500,
+      "priceUSD": 32.99,
+      "originalPrice": null,
+      "originalPriceUSD": null,
+      "quantity": 10,
+      "description": "A sterling silver Necklace inspired by the magic of the sea.",
+      "material": "Sterling Silver",
+      "gemstone": null,
+      "weight": "6.8g",
+      "image": "/products/mermaid-3.PNG",
+      "images": ["/products/mermaid-1.PNG","/products/mermaid-2.PNG","/products/mermaid-3.PNG"],
+      "featured": false
+    },
+    {
+      "id": 55,
+      "name": "Rosé Link Elegance Necklace",
+      "category": "silver_jewels",
+      "price": 2500,
+      "priceUSD": 34.99,
+      "originalPrice": null,
+      "originalPriceUSD": null,
+      "quantity": 10,
+      "description": "A refined sterling silver chain finished in soft rose gold with subtle crystal accents.",
+      "material": "Sterling Silver",
+      "gemstone": null,
+      "weight": "6.8g",
+      "image": "/products/chain-silver-1.PNG",
+      "images": ["/products/chain-silver-1.PNG","/products/chain-silver-2.PNG"],
+      "featured": false
     }
   ]
 }

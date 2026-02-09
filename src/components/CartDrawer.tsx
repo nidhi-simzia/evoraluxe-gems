@@ -9,7 +9,7 @@ const CartDrawer = () => {
   const { items, totalItems, totalPrice, updateQuantity, removeFromCart, clearCart } = useCart();
   const { formatPrice, symbol } = useCurrency();
 
-  const whatsappNumber = "8485918272";
+  const whatsappNumber = "918485918272";
   
   const generateWhatsAppMessage = () => {
     let message = "Hi! I'd like to place an order:\n\n";
