@@ -44,7 +44,7 @@ const FeaturedSection = () => {
                   <Button
                     size="sm"
                     className="bg-gold hover:bg-gold/90 text-primary-foreground"
-                    onClick={() => addToCart({ id: product.id, name: product.name, price: product.price, image: product.image })}
+                    onClick={() => addToCart({ id: product.id, name: product.name, price: product.price, priceUSD: product.priceUSD, image: product.image })}
                   >
                     Add
                   </Button>
