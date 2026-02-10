@@ -39,7 +39,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
   }, [items]);
 
-  const addToCart = (product: { id: number; name: string; price: number; image: string }) => {
+  const addToCart = (product: { id: number; name: string; price: number; priceUSD?: number; image: string }) => {
     setItems((prev) => {
       const existing = prev.find((item) => item.id === product.id);
       if (existing) {
