@@ -165,7 +165,7 @@ const Collections = () => {
                 key={product.id} 
                 product={product} 
                 viewMode={viewMode}
-                onAddToCart={() => addToCart({ id: product.id, name: product.name, price: product.price, image: product.image })}
+                onAddToCart={() => addToCart({ id: product.id, name: product.name, price: product.price, priceUSD: product.priceUSD || (product as any).price_usd || 0, image: product.image })}
                 formatPrice={formatPrice}
               />
             ))}

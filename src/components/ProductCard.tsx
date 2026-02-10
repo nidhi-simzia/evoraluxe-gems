@@ -38,7 +38,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       id: product.id,
       name: product.name,
       price: product.price,
-      priceUSD: product.priceUSD,
+      priceUSD: product.priceUSD || undefined,
       image: product.image,
     });
   };

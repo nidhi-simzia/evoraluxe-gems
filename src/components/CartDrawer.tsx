@@ -7,12 +7,15 @@ import { Badge } from "@/components/ui/badge";
 
 const CartDrawer = () => {
   const { items, totalItems, updateQuantity, removeFromCart, clearCart } = useCart();
-  const { formatPrice, formatPriceRaw, symbol } = useCurrency();
+  const { formatPrice, formatPriceRaw, symbol, currency } = useCurrency();
 
   const whatsappNumber = "918485918272";
 
-  const totalPrice = items.reduce((sum, item) => sum + formatPriceRaw(item.price, item.priceUSD) * item.quantity, 0);
-  
+  // const totalPrice = items.reduce((sum, item) => sum + formatPriceRaw(item.price, item.priceUSD) * item.quantity, 0);
+  const totalPrice = items.reduce((sum, item) => {
+    const price = formatPriceRaw(item.price, item.priceUSD);
+    return sum + price * item.quantity;
+  }, 0);
   const generateWhatsAppMessage = () => {
     let message = "Hi! I'd like to place an order:\n\n";
     items.forEach((item) => {

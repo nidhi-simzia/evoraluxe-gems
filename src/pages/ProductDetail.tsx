@@ -16,7 +16,8 @@ const ProductDetail = () => {
   const { formatPrice, symbol } = useCurrency();
   
   const product = productsData.products.find(p => p.id === Number(id));
-  
+  const safePriceUSD = product ? (product.priceUSD || (product as any).price_usd || 0) : 0;
+
   if (!product) {
     return (
       <div className="min-h-screen bg-background">
@@ -37,7 +38,7 @@ const ProductDetail = () => {
     : [product.image];
 
   const whatsappNumber = "918485918272";
-  const priceDisplay = formatPrice(product.price, product.priceUSD);
+  const priceDisplay = formatPrice(product.price, safePriceUSD);
   const message = `Hi! I'm interested in purchasing the "${product.name}" (${priceDisplay}). Please share more details.`;
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
@@ -46,7 +47,8 @@ const ProductDetail = () => {
       id: product.id,
       name: product.name,
       price: product.price,
-      priceUSD: product.priceUSD,
+      // priceUSD: product.priceUSD,
+      priceUSD: safePriceUSD,
       image: product.image,
     });
   };
@@ -98,7 +100,7 @@ const ProductDetail = () => {
                 <span className="text-4xl font-bold text-gold">{formatPrice(product.price, product.priceUSD)}</span>
                 {product.originalPrice && (
                   <span className="text-xl text-muted-foreground line-through">
-                    {formatPrice(product.originalPrice, product.originalPriceUSD || undefined)}
+                    {formatPrice(product.originalPrice, safePriceUSD)}
                   </span>
                 )}
               </div>
